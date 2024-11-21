@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Cliente</title>
+</head>
+<body>
+    <h1>Produtos</h1>
+    <form action="{{ url_for('client_products') }}" method="POST">
+        <input type="text" name="name" placeholder="Nome do Produto" required>
+        <input type="text" name="description" placeholder="Descrição do Produto" required>
+        <button type="submit">Adicionar Produto</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

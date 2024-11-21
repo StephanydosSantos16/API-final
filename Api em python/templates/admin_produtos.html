@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Admin</title>
+</head>
+<body>
+    <h1>Produtos</h1>
+    <form action="{{ url_for('products') }}" method="POST">
+        <input type="text" name="name" placeholder="Nome do Produto" required>
+        <textarea name="description" placeholder="Descrição do Produto" required></textarea>
+        <button type="submit">Adicionar Produto</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <ul>
+        {% for product in products %}
+        <li>
+            {{ product.name }} - {{ product.description }} 
+            <a href="{{ url_for('edit_product', product_id=product.id) }}">Editar</a>
+            <a href="{{ url_for('delete_product', product_id=product.id) }}">Excluir</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
